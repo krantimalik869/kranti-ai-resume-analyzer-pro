@@ -1,5 +1,5 @@
 import streamlit as st
-import PyPDF2
+from pypdf import PdfReader
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -295,7 +295,7 @@ ACTION_VERBS = ["managed", "led", "developed", "architected", "optimized", "incr
 
 def extract_text_from_pdf(file):
     try:
-        reader = PyPDF2.PdfReader(file)
+        reader = PdfReader(file)
         return "".join(page.extract_text() for page in reader.pages)
     except:
         return ""
